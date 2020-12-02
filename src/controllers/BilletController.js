@@ -1,3 +1,4 @@
+/* eslint-disable eqeqeq */
 const bankBilletServices = require('../services/bank/BankBilletService');
 const dealershipPaymentServices = require('../services/dealership/DealershipPaymentService');
 
@@ -9,12 +10,12 @@ module.exports = {
       const data = {};
 
       // Verify if entered line is from bank or dealership
-      if (number.length === 47) {
+      if (number.length == 47) {
         // Validating the digits of the digitable line
         if (bankBilletServices.validateDigitableLineDVs(number)) {
           data.barCode = bankBilletServices.generateBarCode(number);
 
-          if (data.barCode.length !== 44)
+          if (data.barCode.length != 44)
             return res.json({
               error: 'Erro ao gerar o código de barras',
             });
@@ -31,7 +32,7 @@ module.exports = {
         } else {
           return res.json({ error: 'Linha digitável informada é inválida' });
         }
-      } else if (number.length === 48 && number[0] === 8) {
+      } else if (number.length == 48 && number[0] == 8) {
         if (dealershipPaymentServices.validateDigitableLineDVs(number)) {
           data.barCode = dealershipPaymentServices.generateBarCode(number);
 
@@ -55,7 +56,7 @@ module.exports = {
 
       return res.json(data);
     } catch (error) {
-      return res.json({ error: 'Algo deu errado' });
+      return res.json({ error: 'Algo deu errado...' });
     }
   },
 };

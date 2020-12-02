@@ -1,3 +1,4 @@
+/* eslint-disable eqeqeq */
 /* eslint-disable no-array-constructor */
 const blocksServices = require('./BlocksServices');
 
@@ -85,7 +86,7 @@ class DealershipPaymentServices {
       expirationDateCode[3]
     }`;
 
-    return new Date(expirationDate) === 'Data inválida'
+    return new Date(expirationDate) == 'Invalid Date'
       ? 'Sem data de vencimento'
       : expirationDate;
   }
